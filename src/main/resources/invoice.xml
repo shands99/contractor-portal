@@ -3,6 +3,7 @@
 	<header>
 		<client salutation="Mr.">
 			<id>843759</id>
+			<company>Surya</company>
 			<name>Smith</name>
 			<firstname>John</firstname>
 			<postal>
@@ -14,7 +15,7 @@
 		<invoicenr>6465-8896</invoicenr>
 		<invoicedate>2001-02-09</invoicedate>
 		<due>2001-03-31</due>
-		<vatrate>20</vatrate>
+		
 		<company>
 			<account>453667267</account>
 			<sortcode>30-45-87</sortcode>
@@ -32,17 +33,18 @@
 			<weekcommencing>24/02/2015</weekcommencing>
 			<days>5</days>
 			<rate>500</rate>
+			<vatrate>20</vatrate>
 		</item>
 		<item>
 			<type>Consultancy services</type>
 			<weekcommencing>12/02/2015</weekcommencing>
 			<days>3</days>
 			<rate>500</rate>
-		</item>
+		<vatrate>20</vatrate></item>
 	</items>
 	<amounts>
 		<currency>gbp</currency>
 		<totalprice>18,000</totalprice>
 		<totalwithvat>21,000</totalwithvat>
-	</amounts>
+		</amounts>
 </invoice>

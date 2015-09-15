@@ -97,6 +97,10 @@
 										</fo:block>
 										<fo:block>
 											<xsl:value-of select="/invoice/header/company/address1" />
+											<xsl:if test="/invoice/header/company/address2">
+												<xsl:text>,</xsl:text>&#160;
+												<xsl:value-of select="/invoice/header/company/address2" />
+											</xsl:if>
 										</fo:block>
 										<fo:block>
 											<xsl:value-of select="/invoice/header/company/city" />
@@ -147,8 +151,6 @@
 								</fo:table-header>
 								<fo:table-body>
 									<xsl:apply-templates select="/invoice/items/*" />
-
-
 									<fo:table-row>
 										<fo:table-cell number-columns-spanned="5"
 											padding="1mm" padding-top="2mm">
