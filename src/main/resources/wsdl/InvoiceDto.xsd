@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.jemco.org/contractorportal/invoice/dto" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.jemco.org/contractorportal/invoice/dto">
+	
+
+
+
+    <element name="invoice" type="tns:invoiceType"></element>
+
+    <complexType name="invoiceType">
+    	<sequence>
+    		<element name="header" type="tns:headerType"></element>
+    		<element name="items" type="tns:itemsType"></element>
+            <element name="amounts" type="tns:amountsType"></element>
+        </sequence>
+    </complexType>
+
+    <complexType name="headerType">
+    	<sequence>
+    		<element name="invoicenr" type="string"></element>
+    		<element name="invoicedate" type="dateTime"></element>
+    		<element name="due" type="dateTime"></element>
+    		<element name="client" type="tns:clientType"></element>
+    		<element name="company" type="tns:companyType"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="amountsType">
+    	<sequence>
+    		<element name="totalprice" type="double"></element>
+    		<element name="totalwithvat" type="double"></element>
+    		<element name="currency" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="itemsType">
+    	<sequence>
+    		<element name="item" type="tns:itemType" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="itemType"></complexType>
+
+    <complexType name="clientType">
+    	<sequence></sequence>
+    </complexType>
+
+    <complexType name="companyType"></complexType>
+</schema>

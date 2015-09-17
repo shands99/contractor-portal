@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:dto="http://www.jemco.org/contractorportal/invoice/dto" xmlns:tns="http://www.jemco.org/contractorportal/invoice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Invoice" targetNamespace="http://www.jemco.org/contractorportal/invoice">
+  <wsdl:types>
+  
+    <xsd:schema targetNamespace="http://www.jemco.org/contractorportal/invoice">
+      
+      <xsd:import namespace="http://www.jemco.org/contractorportal/invoice/dto" schemaLocation="InvoiceDto.xsd"/>
+      
+      <xsd:element name="createInvoice">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="dto:invoice" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createInvoiceResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateInvoice">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element ref="dto:invoice" />
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateInvoiceResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="createInvoiceFault">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="createInvoiceFault"
+      				type="xsd:string">
+      			</xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+            
+        </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createInvoiceRequest">
+    <wsdl:part element="tns:createInvoice" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createInvoiceResponse">
+    <wsdl:part element="tns:createInvoiceResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateInvoiceRequest">
+  	<wsdl:part name="parameters" element="tns:updateInvoice"></wsdl:part>
+  </wsdl:message>
+  
+  <!-- void response -->
+  <wsdl:message name="updateInvoiceResponse"/>
+
+  <wsdl:portType name="Invoice">
+    <wsdl:operation name="createInvoice">
+      <wsdl:input message="tns:createInvoiceRequest"/>
+      <wsdl:output message="tns:createInvoiceResponse"/>
+        </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InvoiceSOAP" type="tns:Invoice">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="createInvoice">
+
+  		<soap:operation
+  			soapAction="http://www.jemco.org/contractorportal/invoice/createInvoice" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+ 
+
+  </wsdl:binding>
+  <wsdl:service name="Invoice">
+    <wsdl:port binding="tns:InvoiceSOAP" name="InvoiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

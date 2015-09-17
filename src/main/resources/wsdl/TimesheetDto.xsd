@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.jemco.org/contractorportal/timesheet/dto" xmlns:tns="http://www.jemco.org/contractorportal/timesheet/dto" elementFormDefault="qualified">
+
+    <element name="timesheet" type="tns:timesheetType"></element>
+    
+    <complexType name="timesheetType">
+    	<sequence>
+    		<element name="eel1" type="string"></element>
+    	</sequence>
+    </complexType>
+</schema>
