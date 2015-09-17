@@ -40,7 +40,7 @@
 			<weekcommencing>12/02/2015</weekcommencing>
 			<days>3</days>
 			<rate>500</rate>
-		<vatrate>20</vatrate></item>
+			<vatrate>20</vatrate></item>
 	</items>
 	<amounts>
 		<currency>gbp</currency>

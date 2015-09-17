@@ -214,7 +214,7 @@
 			</fo:table-cell>
 			<fo:table-cell padding="1mm">
 				<fo:block>
-					<xsl:value-of select="/invoice/header/vatrate" />
+					<xsl:value-of select="vatrate" />
 					&#37;
 				</fo:block>
 			</fo:table-cell>

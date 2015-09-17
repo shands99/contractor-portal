@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.jemco.org/contractorportal/utils/pdf" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PdfGenerator" targetNamespace="http://www.jemco.org/contractorportal/utils/pdf">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.jemco.org/contractorportal/utils/pdf">
+      <xsd:element name="createFoPdf">
+        <xsd:complexType>
+          <xsd:sequence>
+          	<xsd:element name="xslPath" type="xsd:string" />
+          	<xsd:element name="xmlData" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createFoPdfResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:base64Binary"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createFoPdfFromFoData">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createFoPdfFromFoDataResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    
+      <xsd:element name="createFoPdfFromFo">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createFoPdfFromFoResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createFoPdfRequest">
+    <wsdl:part element="tns:createFoPdf" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createFoPdfResponse">
+    <wsdl:part element="tns:createFoPdfResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="createFoPdfFromFoRequest">
+  	<wsdl:part name="parameters" element="tns:createFoPdfFromFo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createFoPdfFromFoResponse">
+  	<wsdl:part name="parameters" element="tns:createFoPdfFromFoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PdfGenerator">
+        <wsdl:operation name="createFoPdf">
+        	<wsdl:input message="tns:createFoPdfRequest"></wsdl:input>
+        	<wsdl:output message="tns:createFoPdfResponse"></wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="createFoPdfFromFo">
+        	<wsdl:input message="tns:createFoPdfFromFoRequest"></wsdl:input>
+        	<wsdl:output message="tns:createFoPdfFromFoResponse"></wsdl:output>
+        </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PdfGeneratorSOAP" type="tns:PdfGenerator">
+
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="createFoPdfFromFo">
+
+  		<soap:operation
+  			soapAction="http://www.jemco.org/contractorportal/utils/pdf/createFoPdfFromFo" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="createFoPdf">
+
+  		<soap:operation
+  			soapAction="http://www.jemco.org/contractorportal/utils/pdf/createFoPdf" />
+  		<wsdl:input>
+
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  
+  </wsdl:binding>
+  <wsdl:service name="PdfGenerator">
+    <wsdl:port binding="tns:PdfGeneratorSOAP" name="PdfGeneratorSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
