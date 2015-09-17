@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.jemco.org/contractorportal/invoice/dto" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.jemco.org/contractorportal/invoice/dto">
+<schema targetNamespace="http://www.jemco.org/contractorportal/invoice/dto" xmlns:con="http://www.jemco.org/contractorportal/contractor/dto" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.jemco.org/contractorportal/invoice/dto">
 	
 
-
+	<import namespace="http://www.jemco.org/contractorportal/contractor/dto" schemaLocation="ContractorDto.xsd"/>
 
     <element name="invoice">
     	<complexType>
@@ -21,7 +21,7 @@
 	    		<element name="invoicedate" type="date"></element>
 	    		<element name="due" type="date"></element>
 	    		<element name="client" type="tns:clientType"></element>
-	    		<element name="company" type="tns:companyType"></element>
+	    		<element ref="con:company"/>
 	    	</sequence>
 		</complexType>
 	</element>
@@ -58,16 +58,5 @@
     	</sequence>
     </complexType>
 
-    <complexType name="companyType">
-    	<sequence>
-    		<element name="account" type="string"></element>
-    		<element name="sortcode" type="string"></element>
-    		<element name="companyname" type="string"></element>
-    		<element name="address1" type="string" minOccurs="0"></element>
-    		<element name="address2" type="string" minOccurs="0"></element>
-    		<element name="city" type="string" minOccurs="0"></element>
-    		<element name="registration" type="string"></element>
-    		<element name="vatno" type="string" minOccurs="0"></element>
-    	</sequence>
-    </complexType>
+
 </schema>

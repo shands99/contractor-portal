@@ -5,6 +5,9 @@ import java.io.Writer;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.jemco.contractorportal.contractor.dto.Company;
+import org.jemco.contractorportal.contractor.dto.Contractor;
+import org.jemco.contractorportal.contractor.dto.Contractorinfo;
 import org.jemco.contractorportal.invoice.dto.AmountsBuilder;
 import org.jemco.contractorportal.invoice.dto.ClientBuilder;
 import org.jemco.contractorportal.invoice.dto.CompanyBuilder;
@@ -32,6 +35,31 @@ public class Utils {
 			.addVatRate(20)
 			.addWeekCommencing(wc)
 			.getItem();
+	}
+	
+	@Test
+	public void test_config() {
+		Contractorinfo config = new Contractorinfo();
+		
+		Company com = new CompanyBuilder()
+		.addAccount("31582844")
+		.addSortcode("40-05-31")
+		.addCompanyName("JEMCO Solutions Ltd")
+		.addRegNo("09051612")
+		.addVatNo("190 5297 91")
+		.getCompany();
+		
+		com.setCompanyid("XX");
+		config.getCompany().add(com);
+		
+		Contractor contractor = new Contractor();
+		contractor.setCompany(com);
+		contractor.setContractorid("SS");
+		config.getContractor().add(contractor);
+		
+		Writer w = new StringWriter();
+		XmlUtils.marshallToXml("org.jemco.contractorportal.contractor.dto", w, config);
+		System.out.println(w.toString());
 	}
 	
 	@Test

@@ -1,8 +1,10 @@
 package org.jemco.contractorportal.invoice.dto;
 
+import org.jemco.contractorportal.contractor.dto.Company;
+
 public class CompanyBuilder {
 
-	private CompanyType company = new CompanyType();
+	private Company company = new Company();
 	
 	public CompanyBuilder addAccount(String value) {
 		this.company.setAccount(value);
@@ -29,7 +31,7 @@ public class CompanyBuilder {
 		return this;
 	}
 
-	public CompanyType getCompany() {
+	public Company getCompany() {
 		return company;
 	}
 	
