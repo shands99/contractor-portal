@@ -17,23 +17,7 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="createFoPdfFromFoData">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      			<xsd:element name="in" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
-      	</xsd:complexType>
-      </xsd:element>
-      <xsd:element name="createFoPdfFromFoDataResponse">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      			<xsd:element name="out" type="xsd:string"></xsd:element>
-      		</xsd:sequence>
-      	</xsd:complexType>
-      </xsd:element>
-    
+          
       <xsd:element name="createFoPdfFromFo">
       	<xsd:complexType>
       		<xsd:sequence>

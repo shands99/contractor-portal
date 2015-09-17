@@ -9,10 +9,11 @@
       <xsd:element name="createInvoice">
         <xsd:complexType>
           <xsd:sequence>
-            <xsd:element ref="dto:invoice" />
+            <xsd:element ref="dto:invoice"/>
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
+            
       <xsd:element name="createInvoiceResponse">
         <xsd:complexType>
           <xsd:sequence>
@@ -20,34 +21,22 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-      <xsd:element name="updateInvoice">
+    
+      <xsd:element name="getInvoicePdf">
       	<xsd:complexType>
       		<xsd:sequence>
-      			<xsd:element ref="dto:invoice" />
+      			<xsd:element ref="dto:invoice"/>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-      <xsd:element name="updateInvoiceResponse">
+      <xsd:element name="getInvoicePdfResponse">
       	<xsd:complexType>
       		<xsd:sequence>
-
-      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      			<xsd:element name="out" type="xsd:base64Binary"></xsd:element>
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
-
-      <xsd:element name="createInvoiceFault">
-      	<xsd:complexType>
-      		<xsd:sequence>
-
-      			<xsd:element name="createInvoiceFault"
-      				type="xsd:string">
-      			</xsd:element>
-      		</xsd:sequence>
-      	</xsd:complexType>
-      </xsd:element>
-            
-        </xsd:schema>
+    </xsd:schema>
   </wsdl:types>
   <wsdl:message name="createInvoiceRequest">
     <wsdl:part element="tns:createInvoice" name="parameters"/>
@@ -55,20 +44,27 @@
   <wsdl:message name="createInvoiceResponse">
     <wsdl:part element="tns:createInvoiceResponse" name="parameters"/>
   </wsdl:message>
-  <wsdl:message name="updateInvoiceRequest">
-  	<wsdl:part name="parameters" element="tns:updateInvoice"></wsdl:part>
+ 
+  <wsdl:message name="getInvoicePdfRequest">
+  	<wsdl:part name="parameters" element="tns:getInvoicePdf"></wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getInvoicePdfResponse">
+  	<wsdl:part name="parameters" element="tns:getInvoicePdfResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="InvoiceService">
   
-  <!-- void response -->
-  <wsdl:message name="updateInvoiceResponse"/>
-
-  <wsdl:portType name="Invoice">
     <wsdl:operation name="createInvoice">
       <wsdl:input message="tns:createInvoiceRequest"/>
       <wsdl:output message="tns:createInvoiceResponse"/>
-        </wsdl:operation>
+        </wsdl:operation>
+
+
+    <wsdl:operation name="getInvoicePdf">
+    	<wsdl:input message="tns:getInvoicePdfRequest"></wsdl:input>
+    	<wsdl:output message="tns:getInvoicePdfResponse"></wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="InvoiceSOAP" type="tns:Invoice">
+  <wsdl:binding name="InvoiceSOAP" type="tns:InvoiceService">
 
   	<soap:binding style="document"
   		transport="http://schemas.xmlsoap.org/soap/http" />
@@ -85,10 +81,20 @@
   			<soap:body use="literal" />
   		</wsdl:output>
   	</wsdl:operation>
- 
 
+
+  	<wsdl:operation name="getInvoicePdf">
+  		<soap:operation
+  			soapAction="http://www.jemco.org/contractorportal/invoice/getInvoicePdf" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="Invoice">
+  <wsdl:service name="InvoiceService">
     <wsdl:port binding="tns:InvoiceSOAP" name="InvoiceSOAP">
       <soap:address location="http://www.example.org/"/>
     </wsdl:port>

@@ -7,6 +7,7 @@
 	<xsl:template match="/">
 
 		<fo:root>
+		
 			<!-- A4: 217mm x 297mm body: 180mm x 280mm -->
 			<fo:layout-master-set>
 				<fo:simple-page-master margin-bottom="7mm"
@@ -118,6 +119,13 @@
 							</fo:table-row>
 						</fo:table-body>
 					</fo:table>
+					
+					<fo:block padding-top="10mm" font-size="12pt">
+						<fo:block>TO: <xsl:value-of select="/invoice/header/client/company" /></fo:block>
+						<xsl:if test="/invoice/header/client/name">
+							<fo:block>ATTN OF: <xsl:value-of select="/invoice/header/client/firstname" />, <xsl:value-of select="/invoice/header/client/name" /></fo:block>
+						</xsl:if>
+					</fo:block>
 
 					<fo:block padding-top="20mm">
 						<fo:block font-family="sans-serif" font-size="10pt"
