@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.jemco.org/contractorportal/contractor/dto"
+	xmlns:tns="http://www.jemco.org/contractorportal/contractor/dto"
+	xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    jaxb:version="1.0"
+	elementFormDefault="qualified">
+	
+	<element name="ContractorInfo">
+		<complexType>
+			<sequence>
+				<element name="ContractorInfoId" type="int"></element>
+				<element ref="tns:company" minOccurs="0" maxOccurs="1" />
+				<element ref="tns:contract" minOccurs="0" maxOccurs="1"/>
+				<element ref="tns:contractor" minOccurs="0" maxOccurs="1"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<element name="contract">
+		<complexType>
+			<sequence>
+				<element name="contractid" type="ID"></element>
+				<element name="clientid" type="string" />
+				<element name="startdate" type="date"></element>
+				<element name="enddate" type="date"></element>
+				<element name="rate" type="double"></element>
+				<element name="currency" type="string"></element>
+				<element name="paymentTerms" type="int"/>
+			</sequence>
+			<attribute name="contractor" type="IDREF">
+				<annotation>
+	                <appinfo>
+	                    <jaxb:property>
+	                        <jaxb:baseType name="Contractor"/>
+	                    </jaxb:property>
+	                </appinfo>
+	            </annotation> 
+			</attribute>
+		</complexType>
+	</element>
+	
+	<element name="company">
+		<complexType>
+			<sequence>
+				<element name="companyid" type="ID"></element>
+				<element name="account" type="string"></element>
+				<element name="sortcode" type="string"></element>
+				<element name="companyname" type="string"></element>
+				<element name="address1" type="string" minOccurs="0"></element>
+				<element name="address2" type="string" minOccurs="0"></element>
+				<element name="city" type="string" minOccurs="0"></element>
+				<element name="registration" type="string"></element>
+				<element name="vatno" type="string" minOccurs="0"></element>
+			</sequence>
+		</complexType>
+	</element>
+
+    <element name="contractor">
+    	<complexType>
+    		<sequence>
+    			<element name="contractorid" type="ID"></element>
+    			<element name="firstname" type="string"></element>
+    			<element name="lastname" type="string"></element>
+    			<element name="userid" type="string"></element>
+    		</sequence>
+    		<attribute name="company" type="IDREF">
+    			<annotation>
+	                <appinfo>
+	                    <jaxb:property>
+	                        <jaxb:baseType name="Company"/>
+	                    </jaxb:property>
+	                </appinfo>
+	            </annotation> 
+    		</attribute>
+    	</complexType></element>
+</schema>

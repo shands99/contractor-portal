@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.jemco.org/contractorportal/invoice/dto" xmlns:con="http://www.jemco.org/contractorportal/contractor/dto" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.jemco.org/contractorportal/invoice/dto">
+	
+
+	<import namespace="http://www.jemco.org/contractorportal/contractor/dto" schemaLocation="ContractorDto.xsd"/>
+
+    <element name="invoice">
+    	<complexType>
+	    	<sequence>
+	    		<element ref="tns:header"></element>
+	    		<element name="items" type="tns:itemsType"></element>
+	            <element name="amounts" type="tns:amountsType"></element>
+	            <element name="status" type="tns:invoiceStatus"></element>
+	        </sequence>
+	    </complexType>
+    </element>
+    
+    <simpleType name="invoiceStatus">
+    	<restriction base="string">
+    		<enumeration value="NEW"/>
+    		<enumeration value="APPROVED"/>
+    		<enumeration value="REJECTED"/>
+    		<enumeration value="CANCELLED"/>
+    	</restriction>
+    </simpleType>
+	
+	<element name="header">
+		<complexType>
+	    	<sequence>
+	    		<element name="invoicenr" type="string"></element>
+	    		<element name="invoicedate" type="date"></element>
+	    		<element name="due" type="date"></element>
+	    		<element name="client" type="tns:clientType"></element>
+	    		<element ref="con:company"/>
+	    	</sequence>
+		</complexType>
+	</element>
+        
+    <complexType name="amountsType">
+    	<sequence>
+    		<element name="totalprice" type="double"></element>
+    		<element name="totalwithvat" type="double"></element>
+    		<element name="currency" type="string"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="itemsType">
+    	<sequence>
+    		<element name="item" type="tns:itemType" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="itemType">
+    	<sequence>
+    		<element name="type" type="string"></element>
+    		<element name="weekcommencing" type="date"></element>
+    		<element name="days" type="double"></element>
+    		<element name="rate" type="double"></element>
+    		<element name="vatrate" type="int"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="clientType">
+    	<sequence>
+    		<element name="clientId" type="ID"></element>
+    		<element name="company" type="string"></element>
+    		<element name="name" type="string" minOccurs="0"></element>
+    		<element name="firstname" type="string" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+
+
+</schema>

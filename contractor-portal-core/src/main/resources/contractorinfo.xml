@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:contractorinfo xmlns:ns2="http://www.jemco.org/contractorportal/contractor/dto">
+	<ns2:company>
+		<ns2:companyid>COMPANY-1</ns2:companyid>
+		<ns2:account>31582844</ns2:account>
+		<ns2:sortcode>40-05-31</ns2:sortcode>
+		<ns2:companyname>JEMCO Solutions Ltd</ns2:companyname>
+		<ns2:registration>09051612</ns2:registration>
+		<ns2:vatno>190 5297 91</ns2:vatno>
+	</ns2:company>
+	<ns2:contract contractor="USER-1">
+		<ns2:contractid>CONTRACT-1</ns2:contractid>
+		<ns2:clientid>CONTRACT-1</ns2:clientid>
+		<ns2:currency>gbp</ns2:currency>
+		<ns2:rate>500</ns2:rate>
+	</ns2:contract>
+	<ns2:contractor company="COMPANY-1">
+		<ns2:contractorid>USER-1</ns2:contractorid>
+	</ns2:contractor>
+</ns2:contractorinfo>

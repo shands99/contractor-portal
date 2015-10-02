@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.jemco.org/contractorportal/timesheet/dto" xmlns:tns="http://www.jemco.org/contractorportal/timesheet/dto" elementFormDefault="qualified">
+
+    <element name="timesheet">
+    	<complexType>
+    	<sequence>
+    		<element name="timesheetid" type="ID"></element>
+    		<element name="contractorinfoid" type="string"></element>
+    		<element name="clientId" type="string"></element>
+    		<element name="weekCommencing" type="date"></element>
+    		<element name="days" type="int"></element>
+    		<element name="status" type="tns:timesheetStatusType"></element>
+    	</sequence>
+    	</complexType>
+    </element>
+    
+    <simpleType name="timesheetStatusType">
+    				<restriction base="string">
+    					<enumeration value="NEW"/>
+    					<enumeration value="APPROVED"/>
+    					<enumeration value="INVOICED"/>
+    					<enumeration value="REJECTED"/>
+    				</restriction>
+    			</simpleType>
+    
+</schema>

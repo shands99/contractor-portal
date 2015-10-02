@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:dto="http://www.jemco.org/contractorportal/contractor/dto" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.jemco.org/contractorportal/contractor" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ContractorService" targetNamespace="http://www.jemco.org/contractorportal/contractor">
+  <wsdl:types>
+  
+  	  
+    <xsd:schema targetNamespace="http://www.jemco.org/contractorportal/contractor">
+    
+    <xsd:import namespace="http://www.jemco.org/contractorportal/contractor/dto" schemaLocation="ContractorDto.xsd"/>
+    
+      <xsd:element name="getCompanyById">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getCompanyByIdResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="dto:company" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getContractorInfoById">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element name="in" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getContractorInfoByIdResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+      			<xsd:element ref="dto:ContractorInfo"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getCompanyByIdRequest">
+    <wsdl:part element="tns:getCompanyById" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getCompanyByIdResponse">
+    <wsdl:part element="tns:getCompanyByIdResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="getContractorInfoByIdRequest">
+  	<wsdl:part name="parameters" element="tns:getContractorInfoById"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getContractorInfoByIdResponse">
+  	<wsdl:part name="parameters" element="tns:getContractorInfoByIdResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ContractorService">
+    <wsdl:operation name="getCompanyById">
+      <wsdl:input message="tns:getCompanyByIdRequest"/>
+      <wsdl:output message="tns:getCompanyByIdResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getContractorInfoById">
+    	<wsdl:input message="tns:getContractorInfoByIdRequest"></wsdl:input>
+    	<wsdl:output message="tns:getContractorInfoByIdResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContractorServiceSOAP"
+  	type="tns:ContractorService">
+  	<soap:binding style="document"
+  		transport="http://schemas.xmlsoap.org/soap/http" />
+  	<wsdl:operation name="getCompanyById">
+  		<soap:operation
+  			soapAction="http://www.jemco.org/contractorportal/contractor/getCompanyById" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="getContractorInfoById">
+  		<soap:operation
+  			soapAction="http://www.jemco.org/contractorportal/contractor/getContractorInfoById" />
+  		<wsdl:input>
+  			<soap:body use="literal" />
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal" />
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContractorService">
+    <wsdl:port binding="tns:ContractorServiceSOAP" name="ContractorServiceSOAP">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
